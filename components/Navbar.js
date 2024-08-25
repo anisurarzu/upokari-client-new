@@ -17,9 +17,6 @@ const Navbar = () => {
   const [visible, setVisible] = useState(false);
   //   const router = useRouter();
 
-  // Check if the user is authenticated
-  // const isAuthenticated = !!localStorage.getItem("token");
-
   // Handle logout
   const handleLogout = () => {
     // Clear authentication token from local storage
@@ -70,18 +67,18 @@ const Navbar = () => {
         <Link href="/registration" className="text-white hover:text-cyan-300">
           প্রবেশ করুন
         </Link>
-        {!isAuthenticated && (
-          <Link href="/login" className="text-white hover:text-cyan-300">
-            লগ ইন
-          </Link>
-        )}
-        {isAuthenticated && (
+        {/* {!isAuthenticated && ( */}
+        <Link href="/login" className="text-white hover:text-cyan-300">
+          লগ ইন
+        </Link>
+        {/* )} */}
+        {/* {isAuthenticated && (
           <button
             onClick={handleLogout}
             className="text-white hover:text-cyan-300">
             লগ আউট
           </button>
-        )}
+        )} */}
       </div>
 
       {/* Social Media Links */}
@@ -145,12 +142,12 @@ const Navbar = () => {
           <Link href="/registration" onClick={onClose} className="block">
             প্রবেশ করুন
           </Link>
-          {!isAuthenticated && (
-            <Link href="/login" onClick={onClose} className="block">
-              লগ ইন
-            </Link>
-          )}
-          {isAuthenticated && (
+          {/* {!isAuthenticated && ( */}
+          <Link href="/login" onClick={onClose} className="block">
+            লগ ইন
+          </Link>
+          {/* )} */}
+          {/* {isAuthenticated && (
             <button
               onClick={() => {
                 handleLogout();
@@ -159,7 +156,7 @@ const Navbar = () => {
               className="block w-full text-left">
               লগ আউট
             </button>
-          )}
+          )} */}
         </div>
       </Drawer>
     </nav>
