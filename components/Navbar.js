@@ -18,12 +18,12 @@ const Navbar = () => {
   //   const router = useRouter();
 
   // Check if the user is authenticated
-  const isAuthenticated = !!localStorage.getItem("token");
+  // const isAuthenticated = !!localStorage.getItem("token");
 
   // Handle logout
   const handleLogout = () => {
     // Clear authentication token from local storage
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
 
     // Redirect to the login page
     // router.push("/login");
