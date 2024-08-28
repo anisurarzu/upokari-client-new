@@ -2,7 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import SlideCard from "@/components/Product/SlideCard";
 import PdfReader from "@/components/PDFViewer/PdfReader";
-import { Image } from "antd";
+import { Button, Image } from "antd";
 
 export default async function BookDetails({ params }) {
   const bookList = [
@@ -129,6 +129,18 @@ export default async function BookDetails({ params }) {
                 পড়তে পারবেন। বইটির ডাউনলোড লিংকসহ বিস্তারিত সকল তথ্য নিচে দেওয়া
                 আছে।
               </p>
+
+              <div className="py-8">
+                <div className="flex justify-center py-4 gap-2">
+                  <Button className="bg-green-500 text-white">Read</Button>
+                  <Button className="bg-blue-500 text-white">Download</Button>
+                  <Button className="bg-yellow-500 text-white">Buy</Button>
+                </div>
+                <p>
+                  আপনার চাহিদামত সকল ধরনের পিডিএফ দিচ্ছে বইমেট.কম। প্রতিদিন নতুন
+                  নতুন বই পেতে যুক্ত হোন আমাদের{" "}
+                </p>
+              </div>
             </div>
           </div>
           {<SlideCard />}
