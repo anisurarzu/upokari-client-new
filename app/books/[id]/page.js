@@ -1,10 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
 import React from "react";
-import SlideCard from "./SlideCard";
-import Link from "next/link";
+import { notFound } from "next/navigation";
+import SlideCard from "@/components/Product/SlideCard";
 
-export default function Product() {
+// This is a server component, so async data fetching can be done directly
+export default async function BookDetails({ params }) {
   const bookList = [
     {
       id: 1,
@@ -75,32 +74,67 @@ export default function Product() {
     },
   ];
 
-  return (
-    <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-8">
-        <div className="col-span-1">
-          <SlideCard />
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4 bg-white shadow-lg rounded-lg col-span-3">
-          {bookList.map((book, index) => (
-            <div
-              // onClick={() => history.push(`/${book.id}`)}
-              key={index}
-              className="p-2 border border-blue-600 rounded-lg cursor-pointer h-[270px]">
-                <Link href={`/books/${book.id}`}>
-              <img className="rounded-lg" src={book?.image} alt={book?.title} /></Link>
+  const book = bookList?.find((book) => book.id === parseInt(params.id));
 
-              <h3 className="text-center text-blue-600 text-[10px] pt-2">
-                {book.title}
-              </h3>
+  if (!book) {
+    notFound(); // Trigger a 404 page
+  }
+
+  return (
+    <div className='mb-4'>
+      <div className="pt-[50px]">
+        <div className="grid grid-cols-4 px-[130px] gap-8 book-list">
+          <div className="col-span-3 shadow-lg bg-white p-4 border-0 rounded-lg">
+            <div className="p-2 border-0 rounded-lg grid grid-cols-7">
+              <div className="p-[20px] col-span-1">
+                <img
+                  className="border-2 border-blue-600 rounded-lg"
+                  src={book.image}
+                  alt={book.title}
+                />
+              </div>
+              <div className="col-span-6">
+                <h3 className="text-blue-900 text-[26px] pt-[15px] font-semibold">
+                  {book.title}
+                </h3>
+                <div className="flex text-[15px] pt-2">
+                  <p className="">বইয়ের ধরণ: </p>
+                  <p className="text-blue-600">ইসলামিক বই, ইসলামের ইতিহাস</p>
+                </div>
+              </div>
             </div>
-          ))}
+            <div className="grid grid-cols-3 text-white bg-blue-500 border-0 rounded-lg mx-12 mt-20">
+              <div className="flex">
+                <i className="pi pi-telegram text-[47px] p-4"></i>
+                <h3 className="text-[20px] pt-[15px]">
+                  Upokari টেলিগ্রাম চ্যানেল
+                </h3>
+              </div>
+              <div></div>
+              <div className="text-right">
+                <button className="bg-white text-blue-600 font-semibold text-[20px] border-2 border-blue-800 rounded-lg py-2 px-8 mt-[12px] mr-[17px] hover:bg-blue-600 hover:text-white hover:border-white">
+                  Join Now
+                </button>
+              </div>
+            </div>
+            <div className="px-12 pt-4 text-[13px]">
+              <p className="py-2">
+                সোনালী পাতা PDF (Sonali Pata) বইটি আব্দুল মালেক মুজাহিদ এর লেখা।
+                বইটি আমরা অনলাইন থেকে সংগ্রহ করেছি।
+              </p>
+              <p>
+                বাংলা ইবুক ডাউনলোড ওয়েবসাইট। আমাদের ওয়েবসাইট থেকে {book.title}{" "}
+                বইটির PDF কপি ডাউনলোড করে অফলাইনে পড়তে পারবেন এবং চাইলে অনলাইনেও
+                পড়তে পারবেন। বইটির ডাউনলোড লিংকসহ বিস্তারিত সকল তথ্য নিচে দেওয়া
+                আছে।
+              </p>
+            </div>
+          </div>
+          {<SlideCard/>}
+          {/* <MidderlerHomeSideCard /> */}
         </div>
       </div>
-
-      
-
-      
+      {/* <ScocialIcon /> */}
     </div>
   );
 }

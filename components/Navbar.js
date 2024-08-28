@@ -38,7 +38,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black p-4 flex justify-between items-center">
+    <nav className="bg-[#070B31] p-4 flex justify-between items-center">
       {/* Logo */}
       <div className="cursor-pointer">
         <Link href="/">
@@ -59,7 +59,7 @@ const Navbar = () => {
           যোগাযোগ
         </Link>
         <Link href="/about" className="text-white hover:text-cyan-300">
-          About
+        আমাদের সম্পর্কে
         </Link>
         <Link href="/dashboard" className="text-white hover:text-cyan-300">
           ড্যাশবোর্ড
@@ -120,10 +120,10 @@ const Navbar = () => {
         onClose={onClose}
         visible={visible}
         height="33vh" // 1/3 of the screen height
-        className="bg-cyan-600 text-white"
+        className="bg-cyan-600 text-black"
         bodyStyle={{ padding: "10px" }} // Add some padding for the content
-      >
-        <div className="space-y-4 text-white">
+      >  
+        <div className="space-y-4 text-black">
           <Link href="/about" onClick={onClose} className="block">
             বইয়ের ধরণ
           </Link>
@@ -134,7 +134,7 @@ const Navbar = () => {
             যোগাযোগ
           </Link>
           <Link href="/about" onClick={onClose} className="block">
-            About
+          আমাদের সম্পর্কে
           </Link>
           <Link href="/dashboard" onClick={onClose} className="block">
             ড্যাশবোর্ড

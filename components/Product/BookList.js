@@ -1,10 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
-import SlideCard from "./SlideCard";
-import Link from "next/link";
+import { Card, Row, Col } from "antd";
 
-export default function Product() {
+const BookList = () => {
   const bookList = [
     {
       id: 1,
@@ -76,31 +74,67 @@ export default function Product() {
   ];
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-8">
-        <div className="col-span-1">
-          <SlideCard />
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4 bg-white shadow-lg rounded-lg col-span-3">
-          {bookList.map((book, index) => (
-            <div
-              // onClick={() => history.push(`/${book.id}`)}
-              key={index}
-              className="p-2 border border-blue-600 rounded-lg cursor-pointer h-[270px]">
-                <Link href={`/books/${book.id}`}>
-              <img className="rounded-lg" src={book?.image} alt={book?.title} /></Link>
+    <div className="container mx-auto py-8">
 
-              <h3 className="text-center text-blue-600 text-[10px] pt-2">
-                {book.title}
-              </h3>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      
-
+          <div>
+          <h2 className="text-3xl font-bold text-center mb-8">ইসলামিক বই</h2>
+          <Row gutter={[16, 16]} className="justify-center">
+        {bookList?.map((book) => (
+          <Col
+            key={book.id}
+            xs={24}
+            sm={12}
+            md={8}
+            lg={4}
+            className="flex justify-center">
+            <Card
+              hoverable
+              style={{ width: 192 }}
+              cover={<img alt={book.title} src={book.image} />}>
+              <Card.Meta
+                title={
+                  <h3 className="text-lg font-semibold text-center">
+                    {book.title}
+                  </h3>
+                }
+              />
+            </Card>
+          </Col>
+        ))}
+      </Row>
+          </div>
+          
+        
+         <div className='mt-16'>
+         <h2 className="text-3xl font-bold text-center mb-8">শিক্ষামূলক বই</h2>
+          <Row gutter={[16, 16]} className="justify-center">
+        {bookList?.map((book) => (
+          <Col
+            key={book.id}
+            xs={24}
+            sm={12}
+            md={8}
+            lg={4}
+            className="flex justify-center">
+            <Card
+              hoverable
+              style={{ width: 192 }}
+              cover={<img alt={book.title} src={book.image} />}>
+              <Card.Meta
+                title={
+                  <h3 className="text-lg font-semibold text-center">
+                    {book.title}
+                  </h3>
+                }
+              />
+            </Card>
+          </Col>
+        ))}
+      </Row>
+          </div>
       
     </div>
   );
-}
+};
+
+export default BookList;
