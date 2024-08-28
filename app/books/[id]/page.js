@@ -1,8 +1,9 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import SlideCard from "@/components/Product/SlideCard";
+import PdfReader from "@/components/PDFViewer/PdfReader";
+import { Image } from "antd";
 
-// This is a server component, so async data fetching can be done directly
 export default async function BookDetails({ params }) {
   const bookList = [
     {
@@ -81,13 +82,13 @@ export default async function BookDetails({ params }) {
   }
 
   return (
-    <div className='mb-4'>
+    <div className="mb-4">
       <div className="pt-[50px]">
         <div className="grid grid-cols-4 px-[130px] gap-8 book-list">
           <div className="col-span-3 shadow-lg bg-white p-4 border-0 rounded-lg">
             <div className="p-2 border-0 rounded-lg grid grid-cols-7">
               <div className="p-[20px] col-span-1">
-                <img
+                <Image
                   className="border-2 border-blue-600 rounded-lg"
                   src={book.image}
                   alt={book.title}
@@ -130,10 +131,13 @@ export default async function BookDetails({ params }) {
               </p>
             </div>
           </div>
-          {<SlideCard/>}
+          {<SlideCard />}
           {/* <MidderlerHomeSideCard /> */}
         </div>
       </div>
+      {/* <h1 className="text-2xl font-bold mb-4">PDF Reader</h1>
+      <PdfReader fileUrl="/files/test-book-1.pdf" /> */}
+
       {/* <ScocialIcon /> */}
     </div>
   );
